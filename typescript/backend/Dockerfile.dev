@@ -1,0 +1,6 @@
+FROM node:lts
+WORKDIR /usr/app
+RUN apk update && apk add bash
+COPY ./package.json ./package.json
+COPY ./package-lock.json ./package-lock.json
+RUN npm install
