@@ -2,7 +2,8 @@ import { cleanEnv, str, url, port } from "envalid";
 
 interface envConfiguration {
   NODE_ENV: string;
-  TRACING_GRPC_ENDPOINT: string;
+  JAEGER_HOST: string;
+  JAEGER_PORT: number;
   PORT: number;
 }
 
@@ -11,9 +12,13 @@ function validateEnv(): envConfiguration {
     NODE_ENV: str({
       choices: ["development", "test", "production", "staging"],
     }),
-    TRACING_GRPC_ENDPOINT: url({
-      example: "grpc://jaeger:6832",
-      desc: "Endpoint that will collect OpenTelemetry traces over GRPC",
+    JAEGER_HOST: str({
+      devDefault: "jaeger",
+      desc: "hostname of the jaeger collector",
+    }),
+    JAEGER_PORT: port({
+      devDefault: 3000,
+      desc: "UDP port of the jaeger collector",
     }),
     PORT: port({
       devDefault: 3000,

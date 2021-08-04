@@ -10,8 +10,8 @@ services:
       - ${PWD}/package.json:/usr/app/package.json
       - ${PWD}/node_modules:/usr/app/node_modules
     ports:
-      - "3000:3000"
-      - "9229:9229"
+      - "4000:3000"
+      - "9228:9229"
     networks:
       - backend
     depends_on:
@@ -19,7 +19,8 @@ services:
     environment:
       PORT: 3000
       NODE_ENV: development
-      TRACING_GRPC_ENDPOINT: grpc://jaeger:6832
+      JAEGER_HOST: jaeger
+      JAEGER_PORT: 6832
 
   jaeger:
     image: jaegertracing/all-in-one:latest
