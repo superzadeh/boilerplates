@@ -4,8 +4,8 @@ import helmet from "helmet";
 import hpp from "hpp";
 import logger from "morgan";
 import "reflect-metadata";
-import { Route } from "./interfaces/Route.ts";
-import { errorMiddleware } from "./middlewares/ErrorMiddleware";
+import { Route } from "./interfaces/route";
+import { errorMiddleware } from "./middlewares/errorMiddleware";
 
 class App {
   public app: express.Application;
@@ -55,9 +55,6 @@ class App {
 
   private initializeErrorHandling() {
     this.app.use(errorMiddleware);
-    if (this.isProduction) {
-      this.app.use(errors.express);
-    }
   }
 }
 
