@@ -16,7 +16,7 @@ class HelloWorldController {
 
   public sayHello = async (req: Request, res: Response, _: NextFunction) => {
     this.loggingService.info("Saying Hello World...");
-    return res.json({ message: this.helloWorldService.sayHello });
+    return res.status(200).json({ message: this.helloWorldService.sayHello() });
   };
 }
 
