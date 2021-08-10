@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import {
   EnglishHelloWorldService,
   HelloWorldService,
@@ -14,7 +14,7 @@ class HelloWorldController {
     private helloWorldService: HelloWorldService = new EnglishHelloWorldService()
   ) {}
 
-  public sayHello = async (req: Request, res: Response, _: NextFunction) => {
+  public sayHello = async (req: Request, res: Response) => {
     this.loggingService.info("Saying Hello World...");
     return res.status(200).json({ message: this.helloWorldService.sayHello() });
   };

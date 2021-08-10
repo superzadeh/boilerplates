@@ -1,12 +1,7 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { HttpException } from "../exceptions/httpException";
 
-function errorMiddleware(
-  error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+function errorMiddleware(error: Error, req: Request, res: Response) {
   console.error("[ERROR] ", error);
   if (error instanceof HttpException) {
     const httpError = error as HttpException;

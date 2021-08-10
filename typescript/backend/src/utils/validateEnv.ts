@@ -1,4 +1,4 @@
-import { cleanEnv, str, url, port } from "envalid";
+import { cleanEnv, str, port } from "envalid";
 
 interface envConfiguration {
   NODE_ENV: string;
